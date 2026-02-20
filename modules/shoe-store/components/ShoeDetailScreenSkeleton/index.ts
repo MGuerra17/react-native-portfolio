@@ -1,0 +1,1 @@
+export { ShoeDetailScreenSkeleton } from "./ShoeDetailScreenSkeleton";

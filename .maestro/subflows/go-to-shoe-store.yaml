@@ -1,0 +1,10 @@
+# Navigate from Home to Shoe Store (Projects -> Shoe Store card)
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn: "MobilePortfolio"
+- tapOn:
+    id: nav-projects
+- assertVisible: "View project Shoe Store"
+- tapOn:
+    id: project-card-shoe-store

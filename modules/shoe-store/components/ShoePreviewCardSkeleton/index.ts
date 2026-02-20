@@ -1,0 +1,1 @@
+export { ShoePreviewCardSkeleton } from "./ShoePreviewCardSkeleton";

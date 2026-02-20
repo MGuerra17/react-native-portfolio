@@ -1,0 +1,27 @@
+# Main flow: Home → Projects → About with section navigation (Who I Am ↔ Experience)
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn: "MobilePortfolio"
+- assertVisible: "Explore"
+- tapOn:
+    id: nav-projects
+- assertVisible: "Projects"
+- assertVisible:
+    id: project-card-shoe-store
+- tapOn:
+    text: "Go back"
+- assertVisible: "Explore"
+- tapOn:
+    id: nav-about
+- assertVisible: "About me"
+- assertVisible: "Who I Am"
+- tapOn:
+    id: about-swiper-next
+- assertVisible: "Experience"
+- tapOn:
+    id: about-swiper-prev
+- assertVisible: "Who I Am"
+- tapOn:
+    text: "Go back"
+- assertVisible: "Explore"

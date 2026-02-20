@@ -1,0 +1,24 @@
+# Shoe Store: open search, search, open product, select size, add to bag
+appId: ${APP_ID}
+---
+- runFlow:
+    file: ../../subflows/go-to-shoe-store.yaml
+- assertVisible:
+    id: shoe-store-home
+- tapOn:
+    id: shoe-store-search-button
+- assertVisible:
+    id: search-input
+- inputText: "Run"
+- assertVisible:
+    id: search-result-1
+- tapOn:
+    id: search-result-1
+- assertVisible: "Description"
+- assertVisible:
+    id: shoe-detail-add-to-bag
+- tapOn:
+    id: shoe-detail-size-10
+- tapOn:
+    id: shoe-detail-add-to-bag
+- assertVisible: "Description"

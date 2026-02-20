@@ -1,0 +1,22 @@
+# Shoe Store: add product to bag, open bag, checkout, see confirmation
+appId: ${APP_ID}
+---
+- runFlow:
+    file: ../../subflows/go-to-shoe-store.yaml
+- assertVisible:
+    id: shoe-store-home
+- tapOn:
+    id: shoe-preview-1
+- assertVisible:
+    id: shoe-detail-add-to-bag
+- tapOn:
+    id: shoe-detail-size-10
+- tapOn:
+    id: shoe-detail-add-to-bag
+- tapOn:
+    id: shoe-store-bag-button
+- assertVisible: "My Bag"
+- assertVisible:
+    id: bag-checkout
+- tapOn:
+    id: bag-checkout

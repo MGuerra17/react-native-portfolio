@@ -1,0 +1,1 @@
+export { ShoeDetailErrorScreen } from "./ShoeDetailErrorScreen";
