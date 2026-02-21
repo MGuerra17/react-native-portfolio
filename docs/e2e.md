@@ -4,7 +4,7 @@ End-to-end tests use [Maestro](https://maestro.mobile.dev/) to run user flows on
 
 ## Install Maestro CLI
 
-Install Maestro before running `npm run e2e` or `npm run e2e:smoke` (otherwise you'll get `maestro: command not found`):
+Install Maestro before running `npm run e2e` (otherwise you'll get `maestro: command not found`):
 
 ```bash
 curl -Ls "https://get.maestro.mobile.dev" | bash
@@ -22,46 +22,49 @@ Then restart your terminal (or run `source ~/.zshrc` / `source ~/.bashrc`) so `m
 From the project root:
 
 ```bash
-# Run all E2E flows
+# Run all E2E flows (portfolio + shoe-store)
 npm run e2e
 
-# Run only the smoke flow
-npm run e2e:smoke
+# Run only Shoe Store flows
+npm run e2e:shoe-store
 ```
 
 Or with Maestro directly:
 
 ```bash
-# All flows (--config loads env from .maestro/config.yaml; include shoe-store explicitly)
-maestro test -e APP_ID=host.exp.Exponent .maestro/flows/ .maestro/flows/shoe-store/
+# All flows (single directory; all flows live under .maestro/flows/ with module prefixes)
+maestro test -e APP_ID=host.exp.Exponent .maestro/flows/
+
+# Only Shoe Store flows (prefixed with shoe-store-)
+maestro test -e APP_ID=host.exp.Exponent .maestro/flows/shoe-store-*.yaml
 
 # Single flow
-maestro test -e APP_ID=host.exp.Exponent .maestro/flows/smoke.yaml
+maestro test -e APP_ID=host.exp.Exponent .maestro/flows/portfolio-main-flow.yaml
+maestro test -e APP_ID=host.exp.Exponent .maestro/flows/shoe-store-bag-checkout.yaml
 
 # With a specific app (e.g. built artifact)
-maestro test --app path/to/your.app .maestro/flows/smoke.yaml
+maestro test --app path/to/your.app .maestro/flows/
 ```
 
 ## Structure
 
+Flows live in `.maestro/flows/` with a **module prefix** so `npm run e2e` runs every flow (Maestro does not recurse into subdirectories). Reusable subflows live in `.maestro/subflows/` (same prefix convention).
+
 ```
 .maestro/
   config.yaml       # Env (e.g. APP_ID)
-  flows/            # Top-level flows
-    smoke.yaml
-    main-flow.yaml
-    shoe-store/
-      search-and-product.yaml
-      bag-checkout.yaml
-  subflows/         # Reusable steps
-    go-to-shoe-store.yaml
+  flows/            # Flows run by npm run e2e (prefix = module)
+    portfolio-main-flow.yaml
+    shoe-store-search-and-product.yaml
+    shoe-store-bag-checkout.yaml
+  subflows/         # Reusable steps (not run directly; prefix = module)
+    shoe-store-go-to-shoe-store.yaml
 ```
 
-- **smoke**: App launches and basic navigation (Home → Projects → back → About → back).
-- **main-flow**: Home → Projects (back) → About → navigate sections Who I Am ↔ Experience (back).
-- **shoe-store/search-and-product**: Go to Shoe Store, search, open product, select size, add to bag.
-- **shoe-store/bag-checkout**: Add to bag, open bag, checkout, see success and finish.
-- **subflows/go-to-shoe-store**: Navigate from Home to Shoe Store (used by shoe-store flows).
+- **portfolio-main-flow**: Home → Projects (back) → About → navigate sections Who I Am ↔ Experience (back).
+- **shoe-store-go-to-shoe-store** (subflow): Navigate from Home to Shoe Store; used by the two shoe-store flows above.
+- **shoe-store-search-and-product**: Go to Shoe Store, search, open product, select size, add to bag.
+- **shoe-store-bag-checkout**: Add to bag, open bag, checkout, see confirmation.
 
 ## Configuration
 
@@ -97,7 +100,7 @@ When adding new critical paths, add a `testID` to the main interactive element s
 
 ## CI (EAS)
 
-You can run Maestro in [EAS Workflows](https://docs.expo.dev/build-reference/e2e-tests/): add a job that builds the app, installs the Maestro CLI, and runs `maestro test --config .maestro/config.yaml .maestro/flows/ .maestro/flows/shoe-store/` against the built app. Use EAS secrets or workflow env to set `APP_ID` to your build’s bundle id.
+You can run Maestro in [EAS Workflows](https://docs.expo.dev/build-reference/e2e-tests/): add a job that builds the app, installs the Maestro CLI, and runs `maestro test --config .maestro/config.yaml .maestro/flows/` against the built app. Use EAS secrets or workflow env to set `APP_ID` to your build’s bundle id.
 
 ## Locale
 

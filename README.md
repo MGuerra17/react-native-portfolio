@@ -181,7 +181,7 @@ The app follows React Native accessibility best practices:
 ## 🧪 Testing
 
 - **Unit & component**: Jest and React Native Testing Library (`npm test`, `npm run test:watch`). Tests live in `**/__tests__/*.test.{ts,tsx}`.
-- **E2E**: Maestro flows in `.maestro/flows/`. Run with `npm run e2e` or `npm run e2e:smoke`. Requires a development build and Maestro CLI. See [docs/e2e.md](docs/e2e.md) for setup, running locally/CI, and testID conventions.
+- **E2E**: Maestro flows in `.maestro/flows/` (prefixed by module: `portfolio-*`, `shoe-store-*`). Run with `npm run e2e` or `npm run e2e:shoe-store`. Requires a development build and Maestro CLI. See [docs/e2e.md](docs/e2e.md) for setup, running locally/CI, and testID conventions.
 
 ## 📝 Code Quality
 

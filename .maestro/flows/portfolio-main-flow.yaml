@@ -1,4 +1,4 @@
-# Main flow: Home → Projects → About with section navigation (Who I Am ↔ Experience)
+# Portfolio: Home → Projects → About with section navigation (Who I Am ↔ Experience)
 appId: ${APP_ID}
 ---
 - launchApp

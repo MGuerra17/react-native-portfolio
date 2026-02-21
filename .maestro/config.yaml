@@ -1,4 +1,5 @@
 # Maestro E2E configuration
-# Override APP_ID in CI or when using a custom development build.
-env:
-  APP_ID: host.exp.Exponent
+appId: ${APP_ID}
+---
+flows:
+  - "**/*.yaml"

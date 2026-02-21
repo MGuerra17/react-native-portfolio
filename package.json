@@ -12,7 +12,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "e2e": "maestro test -e APP_ID=host.exp.Exponent .maestro/flows/",
-    "e2e:shoe-store": "maestro test -e APP_ID=host.exp.Exponent .maestro/flows/shoe-store/"
+    "e2e:portfolio": "maestro test -e APP_ID=host.exp.Exponent .maestro/flows/portfolio-*.yaml",
+    "e2e:shoe-store": "maestro test -e APP_ID=host.exp.Exponent .maestro/flows/shoe-store-*.yaml"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.4.2",

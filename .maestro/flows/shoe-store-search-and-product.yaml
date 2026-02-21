@@ -2,7 +2,7 @@
 appId: ${APP_ID}
 ---
 - runFlow:
-    file: ../../subflows/go-to-shoe-store.yaml
+    file: ../subflows/shoe-store-go-to-shoe-store.yaml
 - assertVisible:
     id: shoe-store-home
 - tapOn:

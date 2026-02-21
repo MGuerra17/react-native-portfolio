@@ -1,4 +1,4 @@
-# Navigate from Home to Shoe Store (Projects -> Shoe Store card)
+# Shoe Store (subflow): Navigate from Home to Shoe Store (Projects -> Shoe Store card)
 appId: ${APP_ID}
 ---
 - launchApp
