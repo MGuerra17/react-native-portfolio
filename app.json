@@ -1,1 +1,43 @@
-{"expo":{"name":"MobilePortfolio","slug":"MobilePortfolio","version":"1.0.0","orientation":"portrait","icon":"./assets/images/icon.png","scheme":"mobileportfolio","userInterfaceStyle":"automatic","newArchEnabled":true,"ios":{"supportsTablet":true},"android":{"adaptiveIcon":{"backgroundColor":"#E6F4FE","foregroundImage":"./assets/images/android-icon-foreground.png","backgroundImage":"./assets/images/android-icon-background.png","monochromeImage":"./assets/images/android-icon-monochrome.png"},"edgeToEdgeEnabled":true,"predictiveBackGestureEnabled":false},"web":{"output":"static","favicon":"./assets/images/favicon.png"},"plugins":["expo-router",["expo-splash-screen",{"backgroundColor":"#5D39DD","dark":{"backgroundColor":"#5D39DD"}}],"expo-font"],"experiments":{"typedRoutes":true,"reactCompiler":true},"extra":{"router":{},"eas":{"projectId":"6ca37dea-46e9-4455-84c8-cce52a58c096"}}}}
+{
+  "expo": {
+    "name": "MobilePortfolio",
+    "slug": "MobilePortfolio",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "mobileportfolio",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "bundleIdentifier": "dev.miguelguerra.mobileportfolio",
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": { "output": "static", "favicon": "./assets/images/favicon.png" },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#5D39DD",
+          "dark": { "backgroundColor": "#5D39DD" }
+        }
+      ],
+      "expo-font"
+    ],
+    "experiments": { "typedRoutes": true, "reactCompiler": true },
+    "extra": {
+      "router": {},
+      "eas": { "projectId": "6ca37dea-46e9-4455-84c8-cce52a58c096" }
+    }
+  }
+}
