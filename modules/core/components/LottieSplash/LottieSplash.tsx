@@ -1,18 +1,40 @@
 import { STATIC_COLORS } from "@/constants/theme/colors";
 import LottieView from "lottie-react-native";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 const PRIMARY = STATIC_COLORS.primary;
+
+const MIN_SPLASH_DURATION_MS = 2500;
 
 type LottieSplashProps = {
   onFinish: () => void;
 };
 
 export function LottieSplash({ onFinish }: LottieSplashProps) {
-  const handleAnimationFinish = useCallback(() => {
-    onFinish();
-  }, [onFinish]);
+  const [animationFinished, setAnimationFinished] = useState(false);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+  const onFinishCalledRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMinTimeElapsed(true);
+    }, MIN_SPLASH_DURATION_MS);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (animationFinished && minTimeElapsed && !onFinishCalledRef.current) {
+      onFinishCalledRef.current = true;
+      onFinish();
+    }
+  }, [animationFinished, minTimeElapsed, onFinish]);
+
+  const handleAnimationFinish = useCallback((isCancelled?: boolean) => {
+    if (!isCancelled) {
+      setAnimationFinished(true);
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
